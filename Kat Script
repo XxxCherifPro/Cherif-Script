@@ -1,0 +1,94 @@
+local GuisGain = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local TextLabel_2 = Instance.new("TextLabel")
+
+GuisGain.Name = "GuisGain"
+GuisGain.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = GuisGain
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.478252739, 0, 0.498824418, 0)
+Frame.Size = UDim2.new(0.33664313, 0, 0.472957522, 0)
+
+UIAspectRatioConstraint.Parent = Frame
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 0, 4.97878005e-08, 0)
+TextLabel.Size = UDim2.new(0.999999881, 0, 0.0668124408, 0)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "By Kat"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 179, 0)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.257768571, 0, 0.120727099, 0)
+TextButton.Size = UDim2.new(0.487725765, 0, 0.112574644, 0)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Auto Rebirths off"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextStrokeTransparency = 0.800
+TextButton.TextWrapped = true
+
+UICorner.CornerRadius = UDim.new(0.100000001, 0)
+UICorner.Parent = TextButton
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0, 0, 0.916872978, 0)
+TextLabel_2.Size = UDim2.new(0.999999881, 0, 0.0668124408, 0)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Muscle Legends"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+-- Scripts:
+
+local function QYROHUV_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	script.Parent.Active = true
+	script.Parent.Draggable = true
+	local AutoRebirths = false
+	while true do
+		if AutoRebirths == true then
+			local args = {[1] = "rebirthRequest"}
+			game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer(unpack(args))
+		end
+		wait(0.5)
+	end
+	
+	local Button = script.Parent.TextButton
+	Button.MouseButton1Click:Connect(function()
+		if AutoRebirths == false then
+			Button.Text = "Auto Rebirths on"
+			AutoRebirths = true
+		else
+			Button.Text =  "Auto Rebirths off"
+			AutoRebirths = false
+		end
+	end)
+end
+coroutine.wrap(QYROHUV_fake_script)()
